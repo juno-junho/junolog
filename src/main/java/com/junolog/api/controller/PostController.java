@@ -41,6 +41,14 @@ public class PostController {
   */
     public Map<String, String> post(@RequestBody @Valid PostCreate params, BindingResult result) {
         log.info("params={}", params);
+        /**
+         * 1. 매번 메서드 마다 값을 검증해야한다.
+         *      > 개발자가 까먹을 수 있다. -> 검증 부분에서 버그 발생 여지가 높다.
+         *      > 지겹다.
+         * 2. 응답값에 HashMap -> 응답 클래스를 만들어주는게 좋다.
+         * 3. 여러개의 에러 처리 힘들다
+         * 4. 세 번 이상의 반복적 작업은 피해야한다. -> 코드 && 개발 프로세스에 관한 모든 것. -> 자동화 고려해보기.
+         */
         if (result.hasErrors()) {
             List<FieldError> fieldErrors = result.getFieldErrors();
             FieldError firstFieldError = fieldErrors.get(0);
