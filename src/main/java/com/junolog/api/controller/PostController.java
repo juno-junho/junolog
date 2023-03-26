@@ -39,7 +39,7 @@ public class PostController {
 
   방법 3) class 따로 생성
   */
-    public Map<String, String> post(@RequestBody @Valid PostCreate params, BindingResult result) {
+    public Map<String, String> post(@RequestBody @Valid PostCreate params) {
         log.info("params={}", params);
         /**
          * 1. 매번 메서드 마다 값을 검증해야한다.
@@ -49,7 +49,7 @@ public class PostController {
          * 3. 여러개의 에러 처리 힘들다
          * 4. 세 번 이상의 반복적 작업은 피해야한다. -> 코드 && 개발 프로세스에 관한 모든 것. -> 자동화 고려해보기.
          */
-        if (result.hasErrors()) {
+      /*  if (result.hasErrors()) {
             List<FieldError> fieldErrors = result.getFieldErrors();
             FieldError firstFieldError = fieldErrors.get(0);
             String fieldName = firstFieldError.getField();  // title
@@ -58,7 +58,7 @@ public class PostController {
             Map<String, String> error = new HashMap<>();
             error.put(fieldName, errorMessage);
             return error;
-        }
+        }*/
 
         return Map.of();
     }
