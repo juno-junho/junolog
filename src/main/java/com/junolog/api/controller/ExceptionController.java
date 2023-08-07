@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@ControllerAdvice
+@ControllerAdvice // 모든 컨트롤러에 대한 exception을 잡을 수 있다.
 public class ExceptionController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

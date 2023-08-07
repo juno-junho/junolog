@@ -11,7 +11,7 @@ import java.util.Map;
  *     "code": "400",   // 필요한지는 client와 회의해서 결정해야 한다.
  *     "message": "잘못된 요청입니다.",
  *     "validation": {
- *         "title": "값을 입력해주세요"
+ *         "title": "타이틀을 입력해주세요"
  *         "contend":
  *     }
  * }
@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RequiredArgsConstructor
 @Getter
-public class ErrorResponse {
+public class  ErrorResponse { // 정의하는 방식은 회사마다, 팀마다 다르
     private final String code;
     private final String message;
     private Map<String, String> validation = new HashMap<>();

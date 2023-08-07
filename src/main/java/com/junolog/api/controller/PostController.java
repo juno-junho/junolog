@@ -1,6 +1,8 @@
 package com.junolog.api.controller;
 
 import com.junolog.api.request.PostCreate;
+import com.junolog.api.service.PostService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -21,7 +23,11 @@ import java.util.Map;
  */
 @RestController
 @Slf4j
+
+@RequiredArgsConstructor
 public class PostController {
+
+    private final PostService postService;
 
     /**
      * Http Method
@@ -41,7 +47,9 @@ public class PostController {
   */
     public Map<String, String> post(@RequestBody @Valid PostCreate params) {
         log.info("params={}", params);
+        postService.write(params);
         /**
+         * BindingResult를 받는 방식
          * 1. 매번 메서드 마다 값을 검증해야한다.
          *      > 개발자가 까먹을 수 있다. -> 검증 부분에서 버그 발생 여지가 높다.
          *      > 지겹다.
